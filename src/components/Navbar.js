@@ -1,4 +1,4 @@
-import React, {Fragment,useContext, useState} from 'react';
+import React, {Fragment,useContext, useState, useEffect} from 'react';
 
 import Context from '../context';
 import { NavLink, Link } from 'react-router-dom';
@@ -6,17 +6,17 @@ import { NavLink, Link } from 'react-router-dom';
 
 
 
-export default function Navbar({location}) {
+export default function Navbar() {
 
-	const {logo, bloger1} = useContext(Context)
+	const {logo, location} = useContext(Context)
+	console.log(location)
 
 	let classes = []
 
-	const pathname = document.location.pathname.split('/')
+	const pathname = location.pathname.split('/')
 	if(pathname[1]==='blogers' && pathname.length===3) {
 		classes.push('active')
 	}
-	console.log(pathname)
     return (
         <header>
 			<div className="swapper">
