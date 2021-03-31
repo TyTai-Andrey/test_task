@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Blogers from './pages/Blogers';
+import Bloger from './pages/Bloger';
 
 import Context from './context';
 
@@ -35,16 +36,68 @@ const arrBlogers = [
 
 function App() {
 
+	const [location, setLocation] = useState([
+					{pathname: document.location.pathname, hash: document.location.hash},
+					])
+	const [blogers, setBlogers] = useState(
+			[
+				{id: "b1", photo: bloger1, name: "Максим Максимов", YouTube: "3 160 000+", VK: "134 000+", Instagrame: "128 000+", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus elit lobortis pellentesque tellus mi nulla morbi. Risus, quis consectetur sagittis pharetra, urna, leo. Egestas porta habitasse fermentum nulla neque. At eget leo sed bibendum nunc. Diam neque, eu velit urna, feugiat vulputate elit justo. Lectus diam lacus vel donec sit. Vitae venenatis amet suscipit enim nec tincidunt sit lacus. Morbi orci, eget vitae tortor cras at eu duis. Sit est, cursus sem facilisis sed ac"},
+				{id: "b2", photo: bloger2,name: "Макс Максимов", YouTube: "3 160 000+", VK: "134 000+", Instagrame: "128 000+", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus elit lobortis pellentesque tellus mi nulla morbi. Risus, quis consectetur sagittis pharetra, urna, leo. Egestas porta habitasse fermentum nulla neque. At eget leo sed bibendum nunc. Diam neque, eu velit urna, feugiat vulputate elit justo. Lectus diam lacus vel donec sit. Vitae venenatis amet suscipit enim nec tincidunt sit lacus. Morbi orci, eget vitae tortor cras at eu duis. Sit est, cursus sem facilisis sed ac"},
+				{id: "b3", photo: bloger3,name: "Максим Максимов", YouTube: "3 160 000+", VK: "134 000+", Instagrame: "128 000+", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus elit lobortis pellentesque tellus mi nulla morbi. Risus, quis consectetur sagittis pharetra, urna, leo. Egestas porta habitasse fermentum nulla neque. At eget leo sed bibendum nunc. Diam neque, eu velit urna, feugiat vulputate elit justo. Lectus diam lacus vel donec sit. Vitae venenatis amet suscipit enim nec tincidunt sit lacus. Morbi orci, eget vitae tortor cras at eu duis. Sit est, cursus sem facilisis sed ac"},
+				{id: "b4", photo: bloger4,name: "Максим Максимов", YouTube: "3 160 000+", VK: "134 000+", Instagrame: "128 000+", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus elit lobortis pellentesque tellus mi nulla morbi. Risus, quis consectetur sagittis pharetra, urna, leo. Egestas porta habitasse fermentum nulla neque. At eget leo sed bibendum nunc. Diam neque, eu velit urna, feugiat vulputate elit justo. Lectus diam lacus vel donec sit. Vitae venenatis amet suscipit enim nec tincidunt sit lacus. Morbi orci, eget vitae tortor cras at eu duis. Sit est, cursus sem facilisis sed ac"},
+				{id: "b5", photo: bloger5,name: "Максим Максимов", YouTube: "3 160 000+", VK: "134 000+", Instagrame: "128 000+", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus elit lobortis pellentesque tellus mi nulla morbi. Risus, quis consectetur sagittis pharetra, urna, leo. Egestas porta habitasse fermentum nulla neque. At eget leo sed bibendum nunc. Diam neque, eu velit urna, feugiat vulputate elit justo. Lectus diam lacus vel donec sit. Vitae venenatis amet suscipit enim nec tincidunt sit lacus. Morbi orci, eget vitae tortor cras at eu duis. Sit est, cursus sem facilisis sed ac"},
+				{id: "b6", photo: bloger6,name: "Максим Максимов", YouTube: "3 160 000+", VK: "134 000+", Instagrame: "128 000+", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus elit lobortis pellentesque tellus mi nulla morbi. Risus, quis consectetur sagittis pharetra, urna, leo. Egestas porta habitasse fermentum nulla neque. At eget leo sed bibendum nunc. Diam neque, eu velit urna, feugiat vulputate elit justo. Lectus diam lacus vel donec sit. Vitae venenatis amet suscipit enim nec tincidunt sit lacus. Morbi orci, eget vitae tortor cras at eu duis. Sit est, cursus sem facilisis sed ac"},
+				{id: "b7", photo: bloger7,name: "Максим Максимов", YouTube: "3 160 000+", VK: "134 000+", Instagrame: "128 000+", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus elit lobortis pellentesque tellus mi nulla morbi. Risus, quis consectetur sagittis pharetra, urna, leo. Egestas porta habitasse fermentum nulla neque. At eget leo sed bibendum nunc. Diam neque, eu velit urna, feugiat vulputate elit justo. Lectus diam lacus vel donec sit. Vitae venenatis amet suscipit enim nec tincidunt sit lacus. Morbi orci, eget vitae tortor cras at eu duis. Sit est, cursus sem facilisis sed ac"},
+				{id: "b8", photo: bloger8,name: "Максим Максимов", YouTube: "3 160 000+", VK: "134 000+", Instagrame: "128 000+", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus elit lobortis pellentesque tellus mi nulla morbi. Risus, quis consectetur sagittis pharetra, urna, leo. Egestas porta habitasse fermentum nulla neque. At eget leo sed bibendum nunc. Diam neque, eu velit urna, feugiat vulputate elit justo. Lectus diam lacus vel donec sit. Vitae venenatis amet suscipit enim nec tincidunt sit lacus. Morbi orci, eget vitae tortor cras at eu duis. Sit est, cursus sem facilisis sed ac"},
+			]
+		)
+
+	const [blogerVideo, SetBlogerVideo] = useState(
+			[
+				{id: "b1", video: ['video1','video2','video3','video4','video5','video6',]},
+				{id: "b2", video: ['video1','video2','video3','video4','video5','video6',]},
+				{id: "b3", video: ['video1','video2','video3','video4','video5','video6',]},
+				{id: "b4", video: ['video1','video2','video3','video4','video5','video6',]},
+				{id: "b5", video: ['video1','video2','video3','video4','video5','video6',]},
+				{id: "b6", video: ['video1','video2','video3','video4','video5','video6',]},
+				{id: "b7", video: ['video1','video2','video3','video4','video5','video6',]},
+				{id: "b8", video: ['video1','video2','video3','video4','video5','video6',]},
+			]
+		)
+
+	function checkLocation(event) {
+		if (event.target.tagName === "A") {setLocation(
+					[
+					{pathname: document.location.pathname, hash: document.location.hash},
+					]
+					)}
+	}
+
+	
+
+	
+	console.log(location[0])
+	
+	useEffect(()=>{
+		document.addEventListener('click', checkLocation)
+			return ()=> {
+				document.removeEventListener('click', checkLocation)
+			}
+		}
+	)
+
+	
 
     return (
 
         <BrowserRouter>
-	        <Context.Provider value={{logo, footer, bloger1}}>
-		        <Navbar/>
+	        <Context.Provider value={{logo, footer, blogers, blogerVideo}}>
+		        <Navbar location={location}/>
 		       	<div className="body">
 		    		<Switch>
 						<Route path={'/'} exact component={Home}/>
-						<Route path={'/blogers'} component={Blogers}/>
+						<Route path={'/blogers'} exact component={Blogers}/>
+						<Route path={'/blogers/:id'} component={Bloger}/>
 					</Switch>
 		    	</div>
 	            <Footer/>

@@ -1,15 +1,22 @@
-import React, {useContext} from 'react';
+import React, {Fragment,useContext, useState} from 'react';
 
 import Context from '../context';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 
 
 
-export default function Navbar() {
+export default function Navbar({location}) {
 
 	const {logo, bloger1} = useContext(Context)
 
+	let classes = []
+
+	const pathname = document.location.pathname.split('/')
+	if(pathname[1]==='blogers' && pathname.length===3) {
+		classes.push('active')
+	}
+	console.log(pathname)
     return (
         <header>
 			<div className="swapper">
@@ -43,9 +50,23 @@ export default function Navbar() {
 		        </div>
 		        <div className="navbar_footer">
 		        	<ul>
-		        		<li><NavLink to="/contacts" >Главная</NavLink></li><span>/</span>
-		        		<li><NavLink to="/contacts" >Блогеры</NavLink></li><span>/</span>
-		        		<li><NavLink to="/" exact>Блогер</NavLink></li>
+		        		<li><NavLink to="/" exact>Главная</NavLink></li>
+
+		        		{pathname[1]==='blogers' && pathname.length>=2 ? (
+		        			<Fragment>
+			        			<span>/</span>
+			        			<li>
+				        			<NavLink exact to="/blogers">Блогеры</NavLink>
+			        			</li>
+		        			</Fragment>) : null}
+
+		        		{pathname[1]==='blogers' && pathname.length===3 ? (
+		        			<Fragment>
+			        			<span>/</span>
+			        			<li>
+				        			<Link to={document.location.pathname} className={classes.join(' ')}>Блогер</Link>
+			        			</li>
+		        			</Fragment>) : null}
 		        	</ul>
 		        </div>
 			</div>
