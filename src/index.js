@@ -79,7 +79,6 @@ function App() {
 		if (event.target.tagName === "A" || event.target.classList.contains('bloger_block') ) {
 				setTimeout(()=>{setLocation({pathname: document.location.pathname})}, 10)
 
-			console.log("click")
 	}
 	}
 

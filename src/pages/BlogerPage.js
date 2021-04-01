@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext, useState} from 'react';
 
 import Context from '../context';
 import Video from '../components/Video';
@@ -11,9 +11,8 @@ function BlogerPage({match}) {
 	const {blogers, checktion, blogerVideo} = useContext(Context)
     const result = blogers.find((i)=>i.id===match.params.id);
 	const arrVideo = blogerVideo.find((i)=>i.id===match.params.id);
-    const another_blogers = blogers.sort((i)=>i.id!=match.params.id);
+    const another_blogers = blogers.sort((i)=>i.id!==match.params.id);
 
-	const name = 'Blogers HELP';
 
 
     const [trackState, setTrackState] = useState(0)
@@ -23,7 +22,7 @@ function BlogerPage({match}) {
         checktion({pathname: document.location.pathname})
     }
     
-    
+
 
     return (
         <section className="bloger_page">
