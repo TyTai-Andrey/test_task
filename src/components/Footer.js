@@ -20,7 +20,7 @@ function Footer() {
                         </div>
                         <div className="footer-info">
                             <ul>
-                                <li>Связаться с нами</li>
+                                <li>Связаться с нами:</li>
                                 <li>reklama@wildjam.ru</li>
                                 <li>ул. Сущевская, д. 27, стр. 2</li>
                                 <li>+7 (499) 393-39-62</li>

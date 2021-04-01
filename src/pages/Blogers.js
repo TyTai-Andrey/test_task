@@ -11,7 +11,7 @@ import Bloger from '../components/Bloger';
 function Blogers() {
 	
 	const {blogers}=useContext(Context)
-	console.log(blogers)
+
 
    
 
@@ -20,10 +20,10 @@ function Blogers() {
 
         <section className="blogers">
             <div className="swapper">
-                <h1>Блогеры</h1>
+                <h1 className='m1'>Блогеры</h1>
                 <div className="sort">
                     <h3>Сортировать по:</h3>
-                    <div className="list1">
+                    <div id="list1" className="list">
                         <select id="area">
                            <option value="Naples">выберете площадку</option>
                            <option value="London">Все</option>
@@ -32,7 +32,7 @@ function Blogers() {
                            <option value="Frattamaggiore">Авторское шоу</option>
                         </select>
                     </div>
-                    <div className="list2">
+                    <div id="list2" className="list">
                         
                         <select id="social">
                            <option value="Naples">выберете направление</option>
@@ -42,12 +42,16 @@ function Blogers() {
                         </select>
                     </div>
                 </div>
-                <div className="blogers">
+                <div className="allBlogers">
                     {blogers.map((i)=>{
                             return <Bloger key={i.id} parametrs={i}/>
                         })}
                 </div>
+
             </div>
+            <div className="loading_line">
+                    <span>Подгружаем...</span>
+                </div>
             
                 
             

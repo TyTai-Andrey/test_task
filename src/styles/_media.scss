@@ -1,0 +1,270 @@
+@media (max-width: 778px) {
+	.swapper .allBlogers {
+		width: 311px;
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0 auto;
+	}
+
+	.allBlogers .bloger_block:nth-child(1n) {
+		margin-left: 0;
+	}
+}
+
+@media (min-width: 779px) and( max-width: 1109px) {
+	.swapper .allBlogers {
+		width: 642px;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.allBlogers .bloger_block:nth-child(2n+1) {
+		margin-left: 0;
+	}
+}
+
+@media (min-width: 1109px) and (max-width: 1440px) {
+	.allBlogers {
+		width: 973px;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.allBlogers .bloger_block:nth-child(3n+1) {
+		margin-left: 0;
+	}
+}
+
+@media (min-width: 1441px) {
+	.allBlogers {
+		width: 1304px;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.allBlogers .bloger_block:nth-child(4n+1) {
+		margin-left: 0;
+	}
+}
+
+@media (max-width: 830px) {
+	.navbar_header {
+		display: none;
+	}
+	.navbar_header_mobaile {
+		display: flex;
+	}
+	.sort {
+		flex-direction: column;
+
+		.list
+		{
+			margin: 20px 0 0;
+		}
+
+	}
+
+	.navbar_footer {
+		margin-top: 20px;
+	}
+
+
+}
+
+@media (max-width: 1300px) {
+	
+	.footer {
+
+		align-items: flex-end;
+
+
+		.footer-info_logo {
+			justify-content: flex-start;
+			.footer-info {
+
+				width: 505px;
+
+				ul {
+					flex-wrap: wrap;
+
+					li {
+						font-size: .9rem;
+					}
+				}
+			}
+		}
+
+		.footer-social {
+			position: relative;
+			bottom: 50px;
+		}
+	}
+}
+
+@media (max-width: 1000px) {
+	
+	.footer {
+
+		align-items: flex-end;
+
+
+		.footer-info_logo {
+			justify-content: flex-start;
+			.footer-logo img{
+				height: 100px;
+				width: 100px;
+			}
+
+			.footer-info {
+
+				max-width: 350px;
+
+				ul {
+					// flex-wrap: nowrap;
+					// flex-direction: column;
+					padding: 0 0 0 20px;
+
+					li {
+						font-size: .6rem;
+					}
+				}
+			}
+		}
+
+		.footer-social {
+			position: relative;
+			bottom: 50px;
+		}
+	}
+}
+
+@media (max-width: 730px) {
+	
+	.footer {
+
+		align-items: center;
+
+
+		.footer-info_logo {
+			justify-content: flex-start;
+			position: relative;
+			bottom: 20px;
+			.footer-logo img{
+				height: 100px;
+				width: 100px;
+			}
+
+			.footer-info {
+
+				max-width: 505px;
+
+				ul {
+					// flex-wrap: nowrap;
+					// flex-direction: column;
+					padding: 0 0 0 20px;
+					justify-content: space-between;
+
+					li {
+						padding: 0 10px;
+						font-size: .6rem;
+					}
+				}
+			}
+		}
+
+		.footer-social {
+			position: static;
+		}
+	}
+}
+
+@media (max-width: 880px) {
+	.another_blogers .another_blogers-row {
+			margin: 0 auto;
+
+			width: 328.5px;
+
+
+		.another_blogers-items {
+			display: flex;
+			position: relative;
+			flex-wrap: wrap;
+			width: 1314px;
+			transition-property: right;
+			-webkit-transition: .4s ease-out;
+		    -webkit-transition-delay: 0.5s;
+		    -o-transition: .4s ease-out;
+		    -o-transition-delay: 0.5s;
+		    -moz-transition: .4s ease-out;
+		    -moz-transition-delay: 0.5s;
+		    transition: .4s ease-out;
+		    transition-delay: 0.5s;
+
+			.bloger_block {
+				margin: 0 0 20px 20px;
+			}
+			.bloger_block:nth-child(4n+1) {
+				margin: 0 0 20px 0;
+			}
+		}
+	}
+
+	.range {
+	width: 160px;
+	height: 2px;
+	background: #969696;
+	border-radius: 10px;
+	margin: 0 24px;
+	display: flex;
+	align-items: center;
+
+	.track {
+		width: 40px;
+	}
+}
+}
+
+@media (min-width: 881px) and (max-width: 1460px) {
+	.another_blogers .another_blogers-row {
+			margin: 0 auto;
+			width: 657px;
+
+
+		.another_blogers-items {
+			display: flex;
+			position: relative;
+			flex-wrap: wrap;
+			width: 1314px;
+			transition-property: right;
+			-webkit-transition: .4s ease-out;
+		    -webkit-transition-delay: 0.5s;
+		    -o-transition: .4s ease-out;
+		    -o-transition-delay: 0.5s;
+		    -moz-transition: .4s ease-out;
+		    -moz-transition-delay: 0.5s;
+		    transition: .4s ease-out;
+		    transition-delay: 0.5s;
+
+			.bloger_block {
+				margin: 0 0 20px 20px;
+			}
+			.bloger_block:nth-child(4n+1) {
+				margin: 0 0 20px 0;
+			}
+		}
+	}
+
+	.range {
+	width: 120px;
+	height: 2px;
+	background: #969696;
+	border-radius: 10px;
+	margin: 0 24px;
+	display: flex;
+	align-items: center;
+
+	.track {
+		width: 40px;
+	}
+}
+}

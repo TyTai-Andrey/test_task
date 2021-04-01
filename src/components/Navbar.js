@@ -9,7 +9,6 @@ import { NavLink, Link } from 'react-router-dom';
 export default function Navbar() {
 
 	const {logo, location} = useContext(Context)
-	console.log(location)
 
 	let classes = []
 
@@ -19,6 +18,46 @@ export default function Navbar() {
 	}
     return (
         <header>
+        	<nav className="navbar_header_mobaile-menu">
+        		<div className="language">
+		        	<span>en</span> / <span>ru</span>
+		        </div>
+	        	<ul>
+	        		<li>
+		        		<NavLink to="/blogers" >Блогеры</NavLink>
+	        		</li>
+	        		<li>
+		        		<NavLink to="/pay" >Кейсы</NavLink>
+	        		</li>
+	        		<li>
+		        		<NavLink to="/saveguard" >exit agency</NavLink>
+	        		</li>
+	        		<li>
+		        		<NavLink to="/contacts" >Контакты</NavLink>
+	        		</li>
+	        	</ul>
+	        	<div className="exit">
+	        		Закрыть
+	        	</div>
+        	</nav>
+        	<div className='navbar_header_mobaile'>
+					<div className='navbar_header_mobaile-logo_nav'>
+						<div className="navbar_header_mobaile-logo">
+							<NavLink to="/" exact>
+				        		<div className="logo-img">
+					        		<img src={logo} alt="as" width='40' height='40'/>
+								</div>
+			        		</NavLink>
+						</div>
+		        	</div>
+						<div className="navbar_header_mobaile-nav">
+							<span className="long"></span>
+							<span className='short'></span>
+							<span className='short'></span>
+							<span className="long"></span>
+						</div>
+		        	
+		        </div>
 			<div className="swapper">
 	        	<div className='navbar_header'>
 					<div className='logo'>
@@ -48,6 +87,7 @@ export default function Navbar() {
 		        		<span>en</span> / <span>ru</span>
 		        	</div>
 		        </div>
+		        
 		        <div className="navbar_footer">
 		        	<ul>
 		        		<li><NavLink to="/" exact>Главная</NavLink></li>

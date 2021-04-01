@@ -21,11 +21,11 @@ function Bloger({parametrs}) {
             <Link  to={`/blogers/${parametrs.id}`}>
                 <div className="bloger_block-bg">
                     <div className="bloger_block-text">
-                        <h2 className="bloger_block-name">asd</h2>
+                        <h2 className="bloger_block-name">{parametrs.name}</h2>
                         <div className="bloger_block-socials">
-                            <div className="bloger_block-social">Youtube</div>
-                            <div className="bloger_block-social">VK</div>
-                            <div className="bloger_block-social">Inst</div>
+                            <div className="bloger_block-social"><i className="fa fa-play-circle" aria-hidden="true"></i> <span>{parametrs.YouTube}</span></div>
+                            <div className="bloger_block-social"><i className="fa fa-camera" aria-hidden="true"></i> <span>{parametrs.VK}</span></div>
+                            <div className="bloger_block-social"><i className="fa fa-camera" aria-hidden="true"></i> <span>{parametrs.Instagrame}</span></div>
                         </div>
                     </div>
                 </div>
