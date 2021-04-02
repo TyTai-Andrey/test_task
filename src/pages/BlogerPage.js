@@ -14,6 +14,54 @@ function BlogerPage({match}) {
     const another_blogers = blogers.sort((i)=>i.id!==match.params.id);
 
 
+    
+
+    const [distance, setDistance] = useState({items: 0, track: 0})
+
+    function move (auhtificator) {
+        
+        let row = document.querySelector(".another_blogers-row");
+        let items = document.querySelector(".another_blogers-items");
+        let item = document.querySelector(".bloger_block");
+        let range = document.querySelector(".range");
+        let track = document.querySelector(".track");
+
+        let a = {
+            rowWidth: row.scrollWidth,
+            rowWidthVisible: row.clientWidth,
+            rowRight: items.clientLeft,
+            itemWidth: item.clientWidth,
+            rangeWidth: range.clientWidth,
+            trackWidth: track.clientWidth,
+            trackLeft: track.clientLeft,
+            num: ((row.scrollWidth-row.clientWidth)/(item.clientWidth+20)),
+        };
+
+
+
+        if (auhtificator === "right") {
+                console.log(a)
+            if (a.num != 0) {
+                a.rowRight = distance.items+((a.rowWidth-a.rowWidthVisible)/a.num);
+                a.trackLeft = distance.track+((a.rangeWidth-a.trackWidth-distance.track)/a.num);
+                setDistance({items: a.rowRight, track: a.trackLeft})
+            }
+        }
+        if (auhtificator === "left") {
+            if (a.num != 4) {
+                if (a.num === 0 ) {
+                    a.rowRight = distance.items-331;
+                    a.trackLeft = distance.track-40;
+                    setDistance({items: a.rowRight, track: a.trackLeft})
+                } else {
+                    a.rowRight = distance.items-((a.rowWidth-a.rowWidthVisible)/a.num);
+                    a.trackLeft = distance.track-((a.rangeWidth-a.trackWidth-distance.track)/a.num);
+                    setDistance({items: a.rowRight, track: a.trackLeft})
+                }
+            }
+        }
+
+    }
 
     const [trackState, setTrackState] = useState(0)
 
@@ -110,7 +158,7 @@ function BlogerPage({match}) {
                 <div className="another_blogers">
                     <h1 className="m2">Другие блогеры</h1>
                     <div className="another_blogers-row">
-                        <div className="another_blogers-items" style={{right: `${trackState*331}px`}}>
+                        <div className="another_blogers-items" style={{right: `${distance.items}px`}}>
                         {
                             another_blogers.map((i)=>{
                                 return <Bloger key={i.photo} parametrs={i}/>
@@ -119,17 +167,17 @@ function BlogerPage({match}) {
                         </div>
                         <div className="another_blogers-nav">
                             <div id="arrow-left"
-                            onClick={()=>{(trackState===0) ? setTrackState(0) : setTrackState(trackState-1)}}
+                            onClick={()=>move("left")}
                             >
                                 <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M6.99999 0.999998C7.23365 0.999541 7.46008 1.08092 7.64 1.23C7.74125 1.31395 7.82496 1.41705 7.88631 1.5334C7.94766 1.64974 7.98546 1.77705 7.99753 1.90803C8.00961 2.039 7.99573 2.17107 7.95668 2.29668C7.91764 2.42228 7.8542 2.53895 7.77 2.64L3.28999 8L7.60999 13.37C7.69306 13.4723 7.75509 13.59 7.79252 13.7163C7.82996 13.8427 7.84205 13.9752 7.82811 14.1062C7.81417 14.2372 7.77447 14.3642 7.7113 14.4798C7.64813 14.5955 7.56272 14.6975 7.45999 14.78C7.35653 14.871 7.23536 14.9397 7.1041 14.9817C6.97284 15.0237 6.83431 15.0381 6.69722 15.024C6.56013 15.0099 6.42743 14.9676 6.30744 14.8998C6.18746 14.832 6.08279 14.7402 5.99999 14.63L1.16999 8.63C1.02291 8.45107 0.942507 8.22662 0.942507 7.995C0.942507 7.76337 1.02291 7.53893 1.16999 7.36L6.16999 1.36C6.27031 1.23898 6.39775 1.14332 6.54196 1.08077C6.68617 1.01822 6.84309 0.990547 6.99999 0.999998Z" fill="#EFF3F5"/>
                                 </svg>
                             </div>
                             <div className="range">
-                                <span className="track" style={{left: `${trackState*40}px`}}></span>
+                                <span className="track" style={{left: `${distance.track}px`}}></span>
                             </div>
                             <div id="arrow-right" 
-                            onClick={()=>{(trackState===4) ? setTrackState(4) : setTrackState(trackState+1)}}
+                            onClick={()=>move("right")}
                             >
                                 <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M2.00001 15C1.76635 15.0005 1.53992 14.9191 1.36 14.77C1.25875 14.6861 1.17504 14.583 1.11369 14.4666C1.05234 14.3503 1.01454 14.223 1.00247 14.092C0.990393 13.961 1.00427 13.8289 1.04332 13.7033C1.08236 13.5777 1.1458 13.4611 1.23 13.36L5.71001 8L1.39001 2.63C1.30694 2.52771 1.24491 2.41002 1.20748 2.28368C1.17004 2.15734 1.15795 2.02485 1.17189 1.89382C1.18583 1.76279 1.22553 1.63581 1.2887 1.52017C1.35187 1.40454 1.43728 1.30252 1.54001 1.22C1.64347 1.12897 1.76464 1.0603 1.8959 1.01831C2.02716 0.976319 2.16569 0.961916 2.30278 0.976001C2.43987 0.990085 2.57257 1.03236 2.69256 1.10016C2.81254 1.16796 2.91721 1.25983 3.00001 1.37L7.83001 7.37C7.97709 7.54893 8.05749 7.77338 8.05749 8.005C8.05749 8.23663 7.97709 8.46107 7.83001 8.64L2.83001 14.64C2.72969 14.761 2.60225 14.8567 2.45804 14.9192C2.31383 14.9818 2.15691 15.0095 2.00001 15Z" fill="#EFF3F5"/>

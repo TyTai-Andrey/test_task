@@ -225,6 +225,7 @@ h1 {
 
 .sort {
 	display: flex;
+	height: 25px;
 
 	h3 {
 		flex-shrink: 0;
@@ -238,8 +239,75 @@ h1 {
 
 	& .list {
 		margin-left: 20px;
+		display: flex;
+
+		i {
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+
+			padding-top: 5px;
+		}
+
 	}
 
+}
+
+.select {
+	
+	.select_site {
+		display: flex;
+		i {
+			margin-left: 10px;
+		}
+	}
+
+	.select_options {
+		// height: 0;
+		z-index: 999999;
+		transition-property: background;
+		-webkit-transition: .4s ease-out;
+	    -webkit-transition-delay: 0.5s;
+	    -o-transition: .4s ease-out;
+	    -o-transition-delay: 0.5s;
+	    -moz-transition: .4s ease-out;
+	    -moz-transition-delay: 0.5s;
+	    transition: .4s ease-out;
+	    transition-delay: 0.5s;
+		overflow: hidden;
+		background: rgba(110, 16, 94, .5)  ;
+		// border: 0.5px solid #000000;
+		box-sizing: border-box;
+		box-shadow: inset 0px 0px 5px 5px rgba(255, 255, 255, 0.25);
+		backdrop-filter: blur(20px);
+		/* Note: backdrop-filter has minimal browser support */
+
+		border-radius: 12px;
+		ul {
+			list-style: none;
+			
+
+			li {
+				padding: 5px 10px;
+				span {
+					font-size: 16px;
+					line-height: 19px;
+					/* identical to box height */
+
+
+					/* white */
+
+					color: #EFF3F5;
+					opacity: 0.4;
+				}
+			}
+		}
+
+		i {
+			margin: 0;
+			padding: 10px;
+		}
+	}
 }
 
 .blogers {
@@ -335,7 +403,7 @@ h1 {
 
 }
 .bloger_block-bg:hover > .bloger_block-text {
-	opacity: 0;
+	display: none;
 }
 
 
@@ -482,7 +550,7 @@ h1 {
 			position: relative;
 			// right: 331px;
 			width: 2628px;
-			transition-property: right;
+			transition-property: all;
 			-webkit-transition: .4s ease-out;
 		    -webkit-transition-delay: 0.5s;
 		    -o-transition: .4s ease-out;
@@ -521,6 +589,7 @@ h1 {
 	margin: 0 24px;
 	display: flex;
 	align-items: center;
+	position: relative;
 
 	.track {
 		width: 160px;
@@ -539,5 +608,7 @@ h1 {
 	    transition-delay: 0.5s;
 	}
 }
+
+
 
 @import 'styles/media';
